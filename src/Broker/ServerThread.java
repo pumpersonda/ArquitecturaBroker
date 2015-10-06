@@ -35,9 +35,10 @@ public class ServerThread extends Thread {
         {
 
             String clientResponse=inputFromClient.readLine();
+            System.out.println(clientResponse+" jajaja");
             String[] separateData = clientResponse.split(regexToken);
-            System.out.println(regexToken);
-            System.out.println(separateData.toString());
+
+            System.out.println(separateData.length+";"+separateData[0]);
             asignedProxyServer.FindService(separateData[serviceKeyIndex],separateData[actionKeyIndex],separateData[dataKeyIndex]);
 
 

@@ -53,7 +53,7 @@ public void attendBroker(int portNumber){
 
 
 
-                graficaPastel.getGrafica(" Aqui hay una grafica: "+nameService);
+
                 break;
 
             case "barras":
@@ -71,6 +71,7 @@ public void attendBroker(int portNumber){
         switch (action.toLowerCase()){
             case "agregar":
                 unaGrafica.agregarParticipantes(data);
+                unaGrafica.agregarVotos();
                 break;
         }
 
