@@ -2,6 +2,11 @@ package Broker;
 
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,13 +48,17 @@ public void attendBroker(int portNumber){
 
 }
 
-    public void FindService(String nameService, String action, String data){
+    public void FindService(String nameService, String data){
+
+
+        Casilla casilla = new Casilla();
 
         switch (nameService){
             case "pastel":
 
-                Pastel graficaPastel=new Pastel();
-                HandledAction(graficaPastel,action,data);
+               Pastel graficaPastel=new Pastel();
+
+                    HandledAction(graficaPastel, data);
 
 
 
@@ -67,15 +76,25 @@ public void attendBroker(int portNumber){
 
     }
 
-    public void HandledAction(Grafica unaGrafica,String action,String data){
-        switch (action.toLowerCase()){
-            case "agregar":
-                unaGrafica.agregarParticipantes(data);
-                unaGrafica.agregarVotos();
-                break;
-        }
+
+
+    public void HandledAction(Grafica unaGrafica,String data){
+
+
+            Casilla casilla = new Casilla();
+
+         Candidato[] candidatos= casilla.obtenerCandidato(data);
+
+
+
+        for (int NumCandidatos=0; NumCandidatos<candidatos.length;NumCandidatos++)
+            unaGrafica.graficar(candidatos[NumCandidatos].getNombre(),candidatos[NumCandidatos].getVotos());
+
+
 
     }
+
+
 
 
 

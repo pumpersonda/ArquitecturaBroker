@@ -15,8 +15,7 @@ public class ServerThread extends Thread {
     private Socket clientSocket;
     private ProxyServer asignedProxyServer;
     private int serviceKeyIndex=0;
-    private int actionKeyIndex=1;
-    private int dataKeyIndex=2;
+    private int dataKeyIndex=1;
 
     private String regexToken="\\Q::::\\E";
 
@@ -35,12 +34,11 @@ public class ServerThread extends Thread {
         {
 
             String clientResponse=inputFromClient.readLine();
-            System.out.println(clientResponse+" jajaja");
+            System.out.println(clientResponse);
             String[] separateData = clientResponse.split(regexToken);
 
             System.out.println(separateData.length+";"+separateData[0]);
-            asignedProxyServer.FindService(separateData[serviceKeyIndex],separateData[actionKeyIndex],separateData[dataKeyIndex]);
-
+            asignedProxyServer.FindService(separateData[serviceKeyIndex],separateData[dataKeyIndex]);
 
             this.clientSocket.close();
         } catch (IOException ex) {

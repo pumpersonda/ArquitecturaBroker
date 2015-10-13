@@ -19,8 +19,8 @@ public class Pastel implements Grafica{
 
     public Pastel() {
         ventana = new JFrame();
-        ventana.setSize(new Dimension(300,300));
-        ventana.pack();
+        ventana.setSize(new Dimension(300, 300));
+
         JFreeChart graficoBarras = ChartFactory.createBarChart(
                 "Votaciones Actuales", //Título de la gráfica
                 "Participantes", //leyenda Eje horizontal
@@ -30,6 +30,7 @@ public class Pastel implements Grafica{
                 true, //incluir leyendas
                 true, //mostrar tooltips
                 true);
+
         graficoBarras.setBackgroundPaint(Color.LIGHT_GRAY);
         CategoryPlot plot = (CategoryPlot) graficoBarras.getPlot();
         plot.setBackgroundPaint(Color.WHITE); //fondo del grafico
@@ -37,30 +38,15 @@ public class Pastel implements Grafica{
         plot.setRangeGridlinePaint(Color.BLACK);//color de las lineas de rangos
         ChartPanel panelGrafica = new ChartPanel(graficoBarras);
         ventana.setContentPane(panelGrafica);
+        ventana.pack();
         ventana.setVisible(true);
 
     }
 
 
-    public void getGrafica(String datos){
-        System.out.println(datos);
-    }
-
     @Override
-    public void agregarVotos() {
-
-    }
-
-    @Override
-    public void eliminarVotos() {
-
-    }
-
-    @Override
-    public void agregarParticipantes(String data) {
-
-
-            datosGraficables.addValue(0,"Candidatos",data);
+    public void graficar(String nombre,int cantidad) {
+    datosGraficables.addValue(cantidad,nombre,"Candidatos");
 
     }
 }
