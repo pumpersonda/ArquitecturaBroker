@@ -9,7 +9,7 @@ import com.google.gson.JsonParser;
  * Created by André on 12/10/2015.
  */
 public class Casilla {
-    private String formato;
+
 
     public Casilla() {
 
